@@ -1,3 +1,10 @@
+/**
+ * Validar datos usuario
+ * Validar duplicado
+ * encriptar clave
+ *
+ * */
+
 import UserModel,  {UserDocument, UserInput} from  "../models/user.model";
 
 export async function createUser(input: UserInput){
