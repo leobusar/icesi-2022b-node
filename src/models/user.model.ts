@@ -8,7 +8,6 @@ export interface UserInput {
 }
 
 export interface UserDocument  extends UserInput, mongoose.Document {
-    token: string;
     createAt: Date;
     updateAt: Date;
 }

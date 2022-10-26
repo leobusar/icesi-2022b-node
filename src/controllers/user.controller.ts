@@ -29,14 +29,12 @@ export async  function login(req: Request, res: Response) {
     try{
         const user = await findUserByEmail(req.body.email); 
         if ( user !== null && await bcrypt.compare(req.body.password,user.password)){
-            const token = jwt.sign({user_id: user._id, email: user.email}, process.env.TOKENSECRET as Secret, {expiresIn: "2h"})
-            user.token = token
-            user.password = ""
-
-            res.status(200).send(user)
+            const token = await jwt.sign({user_id: user._id, email: user.email}, process.env.TOKENSECRET as Secret, {expiresIn: "2h"})
+            
+            return res.status(200).send({email: user.email, name: user.name, token})
         }
 
-        return res.status(401).send("user or password not valid");
+        return res.status(401).send("Invalid credentials");
     }catch(e: any){
         debugLog(e);
 
