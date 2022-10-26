@@ -15,3 +15,12 @@ export async function createUser(input: UserInput){
         throw new Error(e);
     }
 }
+
+export async function  findUserByEmail(email: string) {
+    try {
+        const user = await UserModel.findOne({email: email})
+        return user;
+    }catch (e: any){
+        throw new Error(e);
+    }
+}
