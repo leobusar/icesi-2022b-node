@@ -12,3 +12,4 @@ export const createUserSchema =  object({
     }).email("Not a valid email address")
 })
 
+//export type updateUserSchema = TypeOf<typeof createUserSchema>;
