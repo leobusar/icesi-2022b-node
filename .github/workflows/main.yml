@@ -13,7 +13,10 @@ jobs:
       with: 
         key: ${{ secrets.PRIVADA }}
         known_hosts: ${{ secrets.KNOW_HOST }}
-      
+    
+    - name: checkout
+      uses: actions/checkout@v2
+  
     - name: Deploy with  rsync
       run: rsync -avz . ${{ secrets.SSH_USER }}@${{secrets.SSH_HOST}}:.
     
