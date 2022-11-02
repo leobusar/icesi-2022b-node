@@ -1,0 +1,20 @@
+name: remote ssh command
+on: [push]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: install ssh key
+      uses: shitamaro/ssh-key-action@v2
+      with: 
+        key: ${{ secrets.PRIVADA }}
+        know_hosts: ${{ secrets.KNOW_HOST }}
+      
+    - name: Deploy with  rsync
+      run: rsync -avz ./ ${{ secrets.SSH_USER }}@${{secrets.SSH_HOST}}:.
+    
+    - name: Build
+      run: ssh ${{ secrets.SSH_USER }}@${{secrets.SSH_HOST}} npm run build
+      
