@@ -20,5 +20,8 @@ jobs:
     - name: Deploy with  rsync
       run: rsync -avz . ${{ secrets.SSH_USER }}@${{secrets.SSH_HOST}}:.
     
+    - name: Install dependencies
+      run: ssh ${{ secrets.SSH_USER }}@${{secrets.SSH_HOST}} npm install
+      
     - name: Build
       run: ssh ${{ secrets.SSH_USER }}@${{secrets.SSH_HOST}} npm run build
