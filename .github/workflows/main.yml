@@ -19,4 +19,3 @@ jobs:
     
     - name: Build
       run: ssh ${{ secrets.SSH_USER }}@${{secrets.SSH_HOST}} npm run build
-      
