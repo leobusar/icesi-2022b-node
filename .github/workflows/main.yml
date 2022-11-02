@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: install ssh key
-      uses: shitamaro/ssh-key-action@v2
+      uses: shimataro/ssh-key-action@v2
       with: 
         key: ${{ secrets.PRIVADA }}
         know_hosts: ${{ secrets.KNOW_HOST }}
